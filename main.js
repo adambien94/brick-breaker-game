@@ -605,9 +605,9 @@ function Brick(x, y, type) {
         this.y + 18
       );
       ellipse(this.x + brickWidth / 2, this.y + 15, 10, 20);
-      fill(98, 77, 168, 255 * (this.life / 100));
+      fill(77, 112, 168, 255 * (this.life / 100));
     } else {
-      fill(98, 77, 168, 255 * (this.life / 100));
+      fill(77, 112, 168, 255 * (this.life / 100));
     }
     stroke(50);
     strokeWeight(2);
