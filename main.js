@@ -6,7 +6,6 @@ const brickHeight = 35;
 var gameStarted = false;
 var bounceCount = 0;
 var ammo = document.getElementById("ammo");
-// var ballsCounter = document.getElementById("balls");
 var title = document.getElementById("title");
 var levelBricks = 0;
 var life = 3;
@@ -89,7 +88,6 @@ document.body.onkeyup = function(e) {
 };
 
 ammo.innerHTML = "Rockets:" + rocketsAmmo;
-// ballsCounter.innerHTML = "Balls:" + life;
 
 const level0 = [
   ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
@@ -195,7 +193,6 @@ function play() {
   gameStarted = true;
 }
 
-// SETUP
 function setup() {
   updateRocketCounter();
   createCanvas(W, H);
@@ -208,36 +205,19 @@ function updateRocketCounter() {
   ammo.innerHTML = "Rockets:" + rocketsAmmo;
 }
 
-// function updateBallsCounter() {
-//   ballsCounter.style.fontSize = "20px";
-//   ballsCounter.style.color = "rgb(255, 175, 195)";
-//   ballsCounter.innerHTML = "Balls:" + life;
-//   setTimeout(function() {
-//     ballsCounter.style.fontSize = "16px";
-//     ballsCounter.style.color = "rgb(255, 175, 195)";
-//   }, 300);
-// }
-
 function endGame() {
   if (levelBricks === 0) {
     pointsWindow.innerHTML = "NEXT LEVEL!";
-    // startBool = false;
     setTimeout(function() {
-      // startBool = true;
       updateRocketCounter();
-      // updateBallsCounter();
       pointsWindow.innerHTML = "";
     }, 1200);
     levelCounter++;
     reset();
   } else if (life === 0) {
-    //noLoop();
-    // startBool = false;
     pointsWindow.innerHTML = "YOU SUCK !!";
     setTimeout(function() {
-      // startBool = true;
       updateRocketCounter();
-      // updateBallsCounter();
       pointsWindow.innerHTML = "";
     }, 1200);
     reset();
@@ -270,7 +250,6 @@ function reset() {
   updateLevel(levels[levelCounter]);
 }
 
-// DRAW
 function draw() {
   console.log();
   background(174, 217, 224);
@@ -298,13 +277,7 @@ function draw() {
       scoreBalls[j].draw(W - 15 - j * 25, 15);
     }
     bat.update();
-    // for (let i = 0; i < brokenBricks.length; i++) {
-    //   brokenBricks[i].update();
-    // }
   } else if (startBool) {
-    // for (let i = 0; i < brokenBricks.length; i++) {
-    //   brokenBricks[i].update();
-    // }
     pointer.draw();
     balls[0].draw();
     bat.draw();
@@ -359,8 +332,6 @@ function draw() {
   endGame();
 }
 
-// BALL
-
 function Ball(x, y, d, type) {
   this.x = x;
   this.y = y;
@@ -388,8 +359,6 @@ function Ball(x, y, d, type) {
   };
 
   this.draw = function() {
-    // fill(0, 0, 0);
-    // ellipse(this.x + shadow.offset, this.y + shadow.offset, this.d, this.d);
     if (this.type === "bonus") {
       stroke(255, 76, 121);
       fill(255, 76, 121);
@@ -452,19 +421,6 @@ function Ball(x, y, d, type) {
         }
       }
       this.dy = -this.dy;
-      // else if (this.x < batX1 + 10) {
-      //     if (this.dx > 0) {
-      //         this.dx = -this.dx;
-      //     } else {
-      //         this.dx -= 2;
-      //     }
-      // }
-      // else if (this.x > batX2 - 10) {
-      //     if (this.dx < 0) {
-      //         this.dx = -this.dx;
-      //     } else {
-      //         this.dx += 2;
-      //     }
       if (this.type != "bonus") {
         bounceCount++;
       }
@@ -481,7 +437,6 @@ function Ball(x, y, d, type) {
       } else {
         this.y = -20;
         life--;
-        //updateBallsCounter();
         this.x = Math.random() * 540 + 30;
         scoreBalls.pop();
       }
@@ -489,7 +444,6 @@ function Ball(x, y, d, type) {
   };
 }
 
-// Bat
 function Bat() {
   this.width = 100;
   this.x1 = W / 2 - this.width / 2;
@@ -621,7 +575,6 @@ function Brick(x, y, type) {
   };
 }
 
-// POINTER
 function Pointer() {
   this.x1 = W / 2;
   this.y1 = H - ball.r;
@@ -654,7 +607,6 @@ function ScoreBall() {
   };
 }
 
-//  CLOUDS
 function Clouds(x, y, d, d2) {
   this.x = x;
   this.y = y;
@@ -677,7 +629,6 @@ function Clouds(x, y, d, d2) {
   };
 }
 
-//  ROCKET
 function Rocket(x) {
   this.y = H;
   this.x = x;
@@ -699,10 +650,6 @@ function Rocket(x) {
     this.y -= 4;
   };
   this.update = function(brickX, brickY, brickWidth, brickHeight) {
-    // if (this.x < brickX + brickWidth && this.x > brickX && this.y - this.d / 2 < brickY + brickWidth) {
-    //     console.log("JEEEEEEB");
-
-    // }
     if (
       this.x > brickX &&
       this.x < brickX + brickWidth &&
@@ -714,7 +661,6 @@ function Rocket(x) {
   };
 }
 
-//BONUS ROCKET
 function BonusRocket(brickX, brickY) {
   this.x = brickX;
   this.y = brickY;
@@ -776,7 +722,6 @@ function Mountain(x1, y1, x2, y2, x3, y3) {
   };
 }
 
-// BROKEN BRICK
 function BrokenBrick(x, y, ballDx) {
   this.x = x;
   this.y = y;
