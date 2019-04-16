@@ -600,10 +600,12 @@ function ScoreBall() {
   this.draw = function(x, y) {
     this.x = x;
     this.y = y;
-    strokeWeight(1);
+    strokeWeight(0);
     stroke(0);
-    fill(255);
+    fill(100);
     ellipse(this.x, this.y, this.d, this.d);
+    fill(255);
+    ellipse(this.x + 2, this.y + 2, this.d, this.d);
   };
 }
 
