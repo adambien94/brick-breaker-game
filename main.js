@@ -2,7 +2,7 @@ const W = 600;
 const H = 500;
 const maxBricks = 10;
 const brickWidth = W / maxBricks;
-const brickHeight = 30;
+const brickHeight = 32;
 var gameStarted = false;
 var bounceCount = 0;
 var ammo = document.getElementById("ammo");
@@ -558,11 +558,11 @@ function Brick(x, y, type) {
       strokeWeight(2);
       triangle(
         this.x - 5 + brickWidth / 2,
-        this.y + 27,
+        this.y + 28,
         this.x + 5 + brickWidth / 2,
-        this.y + 27,
+        this.y + 28,
         this.x + brickWidth / 2,
-        this.y + 15
+        this.y + 16
       );
       ellipse(this.x + brickWidth / 2, this.y + 13, 10, 20);
       fill(77, 112, 168, 255 * (this.life / 100));
