@@ -23,7 +23,6 @@ canvas {
   transform: translate(-50%, -50%);
   border: 10px solid rgb(20, 20, 20);
   border-radius: 16px;
-  background: linear-gradient(rgba(0, 255, 0, 0.05), rgba(255, 0, 0, 0.05));
 }
 
 #info-bar {
@@ -109,6 +108,18 @@ button {
 
 .hidden {
   display: none;
+}
+
+.instruction {
+  position: absolute;
+  margin: 10px;
+}
+
+.instruction span {
+  font-size: 12px;
+  color: lightgreen;
+  display: block;
+  margin: 0 auto;
 }
 
 /* 
