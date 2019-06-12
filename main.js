@@ -195,7 +195,13 @@ function play() {
 
 function setup() {
   updateRocketCounter();
-  createCanvas(W, H);
+  var cnv = createCanvas(W, H);
+  cnv.style("display", "flex");
+  cnv.style("position", "absolute");
+  cnv.style("left", "50%");
+  cnv.style("top", "50%");
+  cnv.style("transform", "translate(-50%, -50%)");
+
   clouds = new Clouds(100, 100, 50, 70);
   clouds2 = new Clouds(450, 200, 85, 45);
   reset();
@@ -600,12 +606,10 @@ function ScoreBall() {
   this.draw = function(x, y) {
     this.x = x;
     this.y = y;
-    strokeWeight(0);
+    strokeWeight(1);
     stroke(0);
-    fill(100);
-    ellipse(this.x, this.y, this.d, this.d);
     fill(255);
-    ellipse(this.x + 2, this.y + 2, this.d, this.d);
+    ellipse(this.x, this.y, this.d, this.d);
   };
 }
 
