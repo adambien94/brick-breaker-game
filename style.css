@@ -23,6 +23,7 @@ canvas {
   transform: translate(-50%, -50%);
   border: 10px solid rgb(20, 20, 20);
   border-radius: 16px;
+  background: rgba(255, 0, 0, 0.1);
 }
 
 #info-bar {
@@ -117,7 +118,7 @@ button {
 
 .instruction span {
   font-size: 12px;
-  color: lightgreen;
+  color: rgba(255, 255, 255, 0.4);
   display: block;
   margin: 0 auto;
 }
