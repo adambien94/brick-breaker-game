@@ -154,5 +154,10 @@ button {
   .my-window {
     width: 100vw;
     height: calc(100vw * 500 / 600);
+    background: transparent;
+  }
+
+  .instruction {
+    display: none;
   }
 }
