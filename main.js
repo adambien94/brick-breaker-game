@@ -7,6 +7,7 @@ var gameStarted = false;
 var bounceCount = 0;
 var ammo = document.getElementById("ammo");
 var title = document.getElementById("title");
+var myWindow = document.querySelector(".my-window");
 var levelBricks = 0;
 var life = 3;
 var ball = {
@@ -41,8 +42,22 @@ var brokenBricks = [];
 var levels = [];
 var levelCounter = 0;
 var startBool = false;
+var windowWidth = window.innerWidth;
+var cnvScale = 1;
 
-window.onload = startBtnPulse();
+window.onload = start();
+
+function start() {
+  startBtnPulse();
+  setScale();
+}
+
+function setScale() {
+  if (windowWidth < 1000) {
+    cnvScale = windowWidth / W;
+    cnvScale = Math.floor(cnvScale * 10) / 10;
+  }
+}
 
 function startBtnPulse() {
   setInterval(function() {
@@ -81,7 +96,7 @@ window.addEventListener("wheel", function() {
 
 document.body.onkeyup = function(e) {
   if (e.keyCode == 32 && rocketsAmmo && gameStarted) {
-    rockets.push(new Rocket(mouseX));
+    rockets.push(new Rocket(mouseX / cnvScale));
     rocketsAmmo--;
     updateRocketCounter();
   }
@@ -200,8 +215,7 @@ function setup() {
   cnv.style("position", "absolute");
   cnv.style("left", "50%");
   cnv.style("top", "50%");
-  cnv.style("transform", "translate(-50%, -50%)");
-
+  cnv.style("transform", "translate(-50%, -50%) scale(" + cnvScale + ")");
   clouds = new Clouds(100, 100, 50, 70);
   clouds2 = new Clouds(450, 200, 85, 45);
   reset();
@@ -216,6 +230,7 @@ function endGame() {
     pointsWindow.innerHTML = "NEXT LEVEL!";
     setTimeout(function() {
       updateRocketCounter();
+      myWindow.style.background = "rgba(255,0,0,0.06)";
       pointsWindow.innerHTML = "";
     }, 1200);
     levelCounter++;
@@ -224,6 +239,7 @@ function endGame() {
     pointsWindow.innerHTML = "YOU SUCK !!";
     setTimeout(function() {
       updateRocketCounter();
+      myWindow.style.background = "rgba(255,0,0,0.06)";
       pointsWindow.innerHTML = "";
     }, 1200);
     reset();
@@ -472,8 +488,8 @@ function Bat() {
   };
 
   this.update = function() {
-    this.x1 = mouseX - 50;
-    this.x2 = mouseX + 50;
+    this.x1 = mouseX / cnvScale - 50;
+    this.x2 = mouseX / cnvScale + 50;
     this.draw();
   };
 
