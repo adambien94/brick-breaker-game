@@ -230,7 +230,6 @@ function endGame() {
     pointsWindow.innerHTML = "NEXT LEVEL!";
     setTimeout(function() {
       updateRocketCounter();
-      myWindow.style.background = "rgba(255,0,0,0.06)";
       pointsWindow.innerHTML = "";
     }, 1200);
     levelCounter++;
@@ -239,7 +238,6 @@ function endGame() {
     pointsWindow.innerHTML = "YOU SUCK !!";
     setTimeout(function() {
       updateRocketCounter();
-      myWindow.style.background = "rgba(255,0,0,0.06)";
       pointsWindow.innerHTML = "";
     }, 1200);
     reset();
