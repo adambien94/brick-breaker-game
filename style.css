@@ -22,7 +22,7 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(255, 0, 0, 0.06);
-  transition: .05s;
+  transition: 0.05s;
 }
 
 #info-bar {
@@ -59,7 +59,7 @@ canvas {
   /* margin-top: 100px; */
   line-height: 400px;
   text-align: center;
-  width: 600px;
+  width: 100%;
   color: rgb(255, 175, 195);
   text-shadow: -3px 3px black;
   font-size: 50px;
@@ -148,8 +148,11 @@ button {
 } */
 
 @media (max-width: 1000px) {
+  body {
+    height: 100vh;
+  }
   .my-window {
     width: 100vw;
-    height: calc(100vw * 500/600);
+    height: calc(100vw * 500 / 600);
   }
 }
