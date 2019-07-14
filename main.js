@@ -12,7 +12,7 @@ var title = document.getElementById("title");
 var levelBricks = 0;
 var life = 3;
 var ball = {
-  r: 15,
+  r: W / 38,
   x: W / 2,
   y: H - 13
 };
