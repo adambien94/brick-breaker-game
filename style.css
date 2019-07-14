@@ -9,14 +9,12 @@ body {
   height: 100vh;
 }
 
-canvas {
-  background: white;
-}
-
 .my-window {
   position: relative;
-  width: 600px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  max-height: 500px;
   z-index: 5;
   top: 50%;
   left: 50%;
@@ -56,7 +54,6 @@ canvas {
 
 #points {
   height: 400px;
-  /* margin-top: 100px; */
   line-height: 400px;
   text-align: center;
   width: 100%;
@@ -125,39 +122,18 @@ button {
   margin: 0 auto;
 }
 
-/* 
-#menu {
-  position: absolute;
-  width: 600px;
-
-  left: 300px;
-  top: 250px;
-  transform: translateX(-50%) translateY(-50%);
-  background: red;
-}
-
-.menu-button {
-  text-align: center;
-  font-size: 64px;
-  padding: 10px;
-}
-
-.menu-button:hover {
-  text-decoration: underline;
-  cursor: pointer;
-} */
-
 @media (max-width: 1000px) {
   body {
     height: 100vh;
   }
+
   .my-window {
+    top: 0;
+    left: 0;
+    transform: translate(0);
+    max-width: none;
+    max-height: none;
     width: 100vw;
     height: calc(100vw * 500 / 600);
-    background: transparent;
-  }
-
-  .instruction {
-    display: none;
   }
 }

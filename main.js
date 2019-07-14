@@ -1,13 +1,14 @@
-const W = 600;
-const H = 500;
+var myWindow = document.querySelector(".my-window");
+
+let W = myWindow.getBoundingClientRect().width;
+let H = myWindow.getBoundingClientRect().height;
 const maxBricks = 10;
 const brickWidth = W / maxBricks;
-const brickHeight = 32;
+const brickHeight = H / 16;
 var gameStarted = false;
 var bounceCount = 0;
 var ammo = document.getElementById("ammo");
 var title = document.getElementById("title");
-var myWindow = document.querySelector(".my-window");
 var levelBricks = 0;
 var life = 3;
 var ball = {
@@ -43,20 +44,22 @@ var levels = [];
 var levelCounter = 0;
 var startBool = false;
 var windowWidth = window.innerWidth;
-var cnvScale = 1;
 
 window.onload = start();
 
-function start() {
-  startBtnPulse();
-  setScale();
+function windowResized() {
+  resizeCanvas(W, H);
 }
 
-function setScale() {
-  if (windowWidth < 1000) {
-    cnvScale = windowWidth / W;
-    cnvScale = Math.floor(cnvScale * 10) / 10;
-  }
+window.addEventListener("resize", function() {
+  W = myWindow.getBoundingClientRect().width;
+  H = myWindow.getBoundingClientRect().height;
+  console.log(W, H);
+  windowResized();
+});
+
+function start() {
+  startBtnPulse();
 }
 
 function startBtnPulse() {
@@ -96,7 +99,7 @@ window.addEventListener("wheel", function() {
 
 document.body.onkeyup = function(e) {
   if (e.keyCode == 32 && rocketsAmmo && gameStarted) {
-    rockets.push(new Rocket(mouseX / cnvScale));
+    rockets.push(new Rocket(mouseX));
     rocketsAmmo--;
     updateRocketCounter();
   }
@@ -211,11 +214,11 @@ function play() {
 function setup() {
   updateRocketCounter();
   var cnv = createCanvas(W, H);
-  cnv.style("display", "flex");
+  cnv.parent("myWindow");
+  cnv.style("z-index", "-1");
   cnv.style("position", "absolute");
-  cnv.style("left", "50%");
-  cnv.style("top", "50%");
-  cnv.style("transform", "translate(-50%, -50%) scale(" + cnvScale + ")");
+  cnv.style("left", "0");
+  cnv.style("top", "0");
   clouds = new Clouds(100, 100, 50, 70);
   clouds2 = new Clouds(450, 200, 85, 45);
   reset();
@@ -465,7 +468,7 @@ function Ball(x, y, d, type) {
 }
 
 function Bat() {
-  this.width = 100;
+  this.width = W / 6;
   this.x1 = W / 2 - this.width / 2;
   this.x2 = W / 2 + this.width / 2;
   this.y = H;
@@ -486,8 +489,8 @@ function Bat() {
   };
 
   this.update = function() {
-    this.x1 = mouseX / cnvScale - 50;
-    this.x2 = mouseX / cnvScale + 50;
+    this.x1 = mouseX - this.width / 2;
+    this.x2 = mouseX + this.width / 2;
     this.draw();
   };
 
