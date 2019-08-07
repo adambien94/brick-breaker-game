@@ -37,7 +37,7 @@ body {
   text-align: center;
   padding-top: 10px;
   font-size: 34px;
-  color: rgb(255, 175, 195);
+  color: lightcoral;
   text-shadow: -3px 3px 0 black;
   text-decoration: underline;
 }
@@ -46,10 +46,10 @@ body {
   font-size: 16px;
   float: left;
   margin: 6px;
-  color: white;
+  color: #fff;
   transition: 0.1s;
-  text-shadow: -2px 2px 0 black;
-  background: rgb(255, 175, 195);
+  text-shadow: -2px 1px 0 black;
+  /* background: darkseagreen; */
 }
 
 #points {
@@ -57,7 +57,7 @@ body {
   line-height: 400px;
   text-align: center;
   width: 100%;
-  color: rgb(255, 175, 195);
+  color: darkseagreen;
   text-shadow: -3px 3px black;
   font-size: 50px;
   position: absolute;
@@ -92,7 +92,7 @@ button {
   border: none;
   outline: none;
   font-style: italic;
-  color: white;
+  color: lightseagreen;
   text-shadow: -3px 3px 0 black;
 }
 

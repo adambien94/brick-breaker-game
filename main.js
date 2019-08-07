@@ -12,7 +12,7 @@ var title = document.getElementById("title");
 var levelBricks = 0;
 var life = 3;
 var ball = {
-  r: W / 38,
+  r: 15,
   x: W / 2,
   y: H - 13
 };
@@ -141,6 +141,18 @@ const level3 = [
 ];
 levels.push(level3);
 
+const level1 = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, "d", "d", "d", "d", "*", "s", "d", "d", 0],
+  [0, 0, "b", "*", "d", "d", "*", "d", 0, 0],
+  [0, 0, 0, "*", "d", "d", "d", 0, 0, 0],
+  [0, 0, 0, 0, "*", "d", 0, 0, 0, 0],
+  [10]
+];
+levels.push(level1);
+
 const level4 = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -152,18 +164,6 @@ const level4 = [
   [16]
 ];
 levels.push(level4);
-
-const level1 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, "d", "d", "d", "d", "*", "s", "d", "d", 0],
-  [0, 0, "b", "*", "d", "d", "*", "d", 0, 0],
-  [0, 0, 0, "*", "d", "d", "d", 0, 0, 0],
-  [0, 0, 0, 0, "*", "d", 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [10]
-];
-levels.push(level1);
 
 const level2 = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -374,8 +374,8 @@ function Ball(x, y, d, type) {
       this.history.splice(0, 1);
     }
     for (var i = 0; i < this.history.length; i++) {
-      fill(255, 160, 184);
-      stroke(255, 160, 184);
+      fill(238, 118, 116, 200);
+      stroke(238, 118, 116, 200);
       var pos = this.history[i];
       ellipse(pos.x, pos.y, i / 2 + 2, i / 2 + 2);
     }
@@ -482,7 +482,7 @@ function Bat() {
     if (this.highlighted === true) {
       stroke(100, 100, 255);
     } else {
-      stroke(255, 50, 100);
+      stroke(238, 118, 116);
     }
     strokeWeight(this.thickness);
     line(this.x1, this.y, this.x2, this.y);
@@ -568,7 +568,7 @@ function Brick(x, y, type) {
         ball.r,
         ball.r
       );
-      fill(255, 50, 100, 200);
+      fill(255, 131, 96, 200);
     } else if (this.type === "rocketBonus") {
       fill(80);
       stroke(0);
@@ -582,9 +582,9 @@ function Brick(x, y, type) {
         this.y + 16
       );
       ellipse(this.x + brickWidth / 2, this.y + 13, 10, 20);
-      fill(77, 112, 168, 255 * (this.life / 100));
+      fill(136, 90, 90, 255 * (this.life / 100));
     } else {
-      fill(77, 112, 168, 255 * (this.life / 100));
+      fill(136, 90, 90, 255 * (this.life / 100));
     }
     stroke(50);
     strokeWeight(2);
@@ -732,8 +732,8 @@ function Mountain(x1, y1, x2, y2, x3, y3) {
 
   this.draw = function() {
     strokeWeight(1);
-    stroke(185, 198, 220);
-    fill(185, 208, 230);
+    stroke(143, 188, 143);
+    fill(195, 221, 195);
     triangle(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3);
   };
 
